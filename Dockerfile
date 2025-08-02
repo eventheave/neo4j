@@ -17,12 +17,12 @@ ENV NEO4J_AUTH=neo4j/password123
 ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
 
 # Network configuration for Render
-# Neo4j 5.x configuration (correct format with underscores)
-ENV NEO4J_server_default_listen_address=0.0.0.0
-ENV NEO4J_server_default_advertised_address=localhost
-ENV NEO4J_server_bolt_listen_address=0.0.0.0:7687
-ENV NEO4J_server_http_listen_address=0.0.0.0:7474
-ENV NEO4J_server_https_listen_address=0.0.0.0:7473
+# Neo4j 5.x configuration (CORRECT Docker format with double underscores)
+ENV NEO4J_server_default__listen__address=0.0.0.0
+ENV NEO4J_server_default__advertised__address=localhost
+ENV NEO4J_server_bolt_listen__address=0.0.0.0:7687
+ENV NEO4J_server_http_listen__address=0.0.0.0:7474
+ENV NEO4J_server_https_listen__address=0.0.0.0:7473
 
 # If using Neo4j 4.x, use these instead:
 # ENV NEO4J_dbms_default_listen_address=0.0.0.0
@@ -32,9 +32,9 @@ ENV NEO4J_server_https_listen_address=0.0.0.0:7473
 # ENV NEO4J_dbms_connector_https_listen_address=0.0.0.0:7473
 
 # Memory configuration optimized for Render (adjust based on your tier)
-# Neo4j 5.x configuration (correct format with underscores)
-ENV NEO4J_server_memory_heap_initial_size=256m
-ENV NEO4J_server_memory_heap_max_size=512m
+# Neo4j 5.x configuration (CORRECT Docker format with double underscores)
+ENV NEO4J_server_memory_heap_initial__size=256m
+ENV NEO4J_server_memory_heap_max__size=512m
 ENV NEO4J_server_memory_pagecache_size=256m
 
 # If using Neo4j 4.x, use these instead:
@@ -43,17 +43,17 @@ ENV NEO4J_server_memory_pagecache_size=256m
 # ENV NEO4J_dbms_memory_pagecache_size=256m
 
 # Security and procedures configuration  
-# Neo4j 5.x configuration (correct format with underscores)
-ENV NEO4J_server_security_procedures_unrestricted=gds.*,apoc.*
-ENV NEO4J_server_security_procedures_allowlist=gds.*,apoc.*
+# Neo4j 5.x configuration (CORRECT Docker format with double underscores)
+ENV NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
+ENV NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
 
 # If using Neo4j 4.x, use these instead:
 # ENV NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
 # ENV NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
 
 # Performance settings
-# Neo4j 5.x configuration (correct format with underscores)
-ENV NEO4J_server_logs_debug_level=INFO
+# Neo4j 5.x configuration (CORRECT Docker format with double underscores)
+ENV NEO4J_server_logs_debug_enabled=true
 
 # If using Neo4j 4.x, use these instead:
 # ENV NEO4J_dbms_logs_debug_level=INFO
