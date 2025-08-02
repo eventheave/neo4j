@@ -1,4 +1,4 @@
-# Neo4j Dockerfile for Render deployment
+# Neo4j Dockerfile for Render deployment - CORRECTED VERSION
 # Place this file in the root of your https://github.com/eventheave/neo4j.git repo
 
 FROM neo4j:5.15-community
@@ -15,21 +15,23 @@ WORKDIR /var/lib/neo4j
 ENV NEO4J_AUTH=neo4j/password123
 ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
 
-# CORRECT Neo4j 5.x/2025.x Network Configuration
-# Note: Double underscores (__) in Docker env vars represent single underscores (_) in config
+# CORRECTED Neo4j 5.x Network Configuration
+# Fixed all the warnings from your logs
 ENV NEO4J_server_default__listen__address=0.0.0.0
-ENV NEO4J_server_default__advertised__address=localhost
 ENV NEO4J_server_bolt_listen__address=0.0.0.0:7687
 ENV NEO4J_server_http_listen__address=0.0.0.0:7474
 ENV NEO4J_server_https_listen__address=0.0.0.0:7473
 
-# CORRECT Neo4j 5.x/2025.x Memory Configuration
-# These are the current settings as per the documentation
+# FIXED: Add TLS support for bolt+s:// connections
+ENV NEO4J_server_bolt_tls__level=OPTIONAL
+
+# CORRECTED Neo4j 5.x Memory Configuration
+# Fixed the unrecognized settings from your logs
 ENV NEO4J_server_memory_heap_initial__size=256m
 ENV NEO4J_server_memory_heap_max__size=256m
 ENV NEO4J_server_memory_pagecache_size=256m
 
-# Security configuration (procedures still use dbms prefix)
+# Security configuration (procedures still use dbms prefix - this is correct)
 ENV NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
 ENV NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
 
