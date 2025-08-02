@@ -17,30 +17,48 @@ ENV NEO4J_AUTH=neo4j/password123
 ENV NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
 
 # Network configuration for Render
-ENV NEO4J_dbms_default_listen_address=0.0.0.0
-ENV NEO4J_dbms_default_advertised_address=localhost
-ENV NEO4J_dbms_connector_bolt_listen_address=0.0.0.0:7687
-ENV NEO4J_dbms_connector_http_listen_address=0.0.0.0:7474
-ENV NEO4J_dbms_connector_https_listen_address=0.0.0.0:7473
+# Neo4j 5.x configuration (current)
+ENV NEO4J_server_default_listen_address=0.0.0.0
+ENV NEO4J_server_default_advertised_address=localhost
+ENV NEO4J_server_bolt_listen_address=0.0.0.0:7687
+ENV NEO4J_server_http_listen_address=0.0.0.0:7474
+ENV NEO4J_server_https_listen_address=0.0.0.0:7473
+
+# If using Neo4j 4.x, use these instead:
+# ENV NEO4J_dbms_default_listen_address=0.0.0.0
+# ENV NEO4J_dbms_default_advertised_address=localhost  
+# ENV NEO4J_dbms_connector_bolt_listen_address=0.0.0.0:7687
+# ENV NEO4J_dbms_connector_http_listen_address=0.0.0.0:7474
+# ENV NEO4J_dbms_connector_https_listen_address=0.0.0.0:7473
 
 # Memory configuration optimized for Render (adjust based on your tier)
-# For Free/Starter tiers - use lower values
-ENV NEO4J_dbms_memory_heap_initial_size=256m
-ENV NEO4J_dbms_memory_heap_max_size=512m
-ENV NEO4J_dbms_memory_pagecache_size=256m
+# Neo4j 5.x configuration
+ENV NEO4J_server_memory_heap_initial_size=256m
+ENV NEO4J_server_memory_heap_max_size=512m
+ENV NEO4J_server_memory_pagecache_size=256m
 
-# For higher tiers, you can use:
-# ENV NEO4J_dbms_memory_heap_initial_size=512m
-# ENV NEO4J_dbms_memory_heap_max_size=2G
-# ENV NEO4J_dbms_memory_pagecache_size=1G
+# If using Neo4j 4.x, use these instead:
+# ENV NEO4J_dbms_memory_heap_initial_size=256m
+# ENV NEO4J_dbms_memory_heap_max_size=512m
+# ENV NEO4J_dbms_memory_pagecache_size=256m
 
-# Security and procedures configuration
-ENV NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
-ENV NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
+# Security and procedures configuration  
+# Neo4j 5.x configuration
+ENV NEO4J_server_security_procedures_unrestricted=gds.*,apoc.*
+ENV NEO4J_server_security_procedures_allowlist=gds.*,apoc.*
+
+# If using Neo4j 4.x, use these instead:
+# ENV NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
+# ENV NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
 
 # Performance settings
-ENV NEO4J_dbms_connectors_default_listen_address=0.0.0.0
-ENV NEO4J_dbms_logs_debug_level=INFO
+# Neo4j 5.x configuration  
+ENV NEO4J_server_default_listen_address=0.0.0.0
+ENV NEO4J_server_logs_debug_level=INFO
+
+# If using Neo4j 4.x, use these instead:
+# ENV NEO4J_dbms_connectors_default_listen_address=0.0.0.0
+# ENV NEO4J_dbms_logs_debug_level=INFO
 
 # If you have custom initialization scripts in your repo
 # COPY ./scripts/ /docker-entrypoint-initdb.d/
