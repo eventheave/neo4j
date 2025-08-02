@@ -1,10 +1,13 @@
-# Neo4j Dockerfile for Render deployment - SIMPLE & WORKING
+# Neo4j Dockerfile for Render deployment - FIXED SIGNAL ISSUES
 # Place this file in the root of your https://github.com/eventheave/neo4j.git repo
 
 FROM neo4j:5.15-community
 
 # Set the working directory
 WORKDIR /var/lib/neo4j
+
+# Run as neo4j user (not root) - fixes signal forwarding issues
+USER neo4j
 
 # Basic Authentication and License
 ENV NEO4J_AUTH=neo4j/password123
