@@ -23,10 +23,16 @@ ENV NEO4J_dbms_connector_bolt_listen_address=0.0.0.0:7687
 ENV NEO4J_dbms_connector_http_listen_address=0.0.0.0:7474
 ENV NEO4J_dbms_connector_https_listen_address=0.0.0.0:7473
 
-# Memory configuration optimized for Render
-ENV NEO4J_dbms_memory_heap_initial_size=512m
-ENV NEO4J_dbms_memory_heap_max_size=2G
-ENV NEO4J_dbms_memory_pagecache_size=1G
+# Memory configuration optimized for Render (adjust based on your tier)
+# For Free/Starter tiers - use lower values
+ENV NEO4J_dbms_memory_heap_initial_size=256m
+ENV NEO4J_dbms_memory_heap_max_size=512m
+ENV NEO4J_dbms_memory_pagecache_size=256m
+
+# For higher tiers, you can use:
+# ENV NEO4J_dbms_memory_heap_initial_size=512m
+# ENV NEO4J_dbms_memory_heap_max_size=2G
+# ENV NEO4J_dbms_memory_pagecache_size=1G
 
 # Security and procedures configuration
 ENV NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
